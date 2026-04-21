@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    height: 8vh;
+    display: flex;
+    align-items: center;
+}
+
+.nav_container {
+    background-color: lightskyblue;
+    height: 7vh;
+}
+
+.nav {
+    width: 80%;
+    height: 7vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+.nav_items {
+    width: 100px;
+    height: 7vh;
+    color: whitesmoke;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_items:hover {
+    background-color: tomato;
+}
+
+.main {
+    background-color: lightcyan;
+    height: 80vh;
+    background-image: url("/img/cloud.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    background-color: lightblue;
+}
+
+.logo {
+    width: 72px;
+    height: 72px;
+    cursor: pointer;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.mt-10 {
+    margin-top: 100px;
+}
+
+.ml-1 {
+    margin-left: 10px;
+}
+
+.mr-1 {
+    margin-right: 10px;
+}
+
+.mr-3 {
+    margin-right: 30px;
+}
+
+.lightblue {
+    color: lightblue;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.basic {
+    text-decoration: none;
+    color: black;
+}
+
+.playwrite-nz-guides-regular {
+    font-family: "Playwrite NZ Guides", cursive;
+    font-weight: 400;
+    font-size: 50px;
+    font-style: normal;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+}
+
+.join-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 400px;
+    height: 400px;
+}
+
+.input-box {
+    width: 300px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
