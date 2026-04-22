@@ -16,15 +16,14 @@
 </div>
 <div class="flex-center">
   <div class="join-box">
-    <form action="/user/join" th:object="${user}" method="post">
+    <form action="/user/join"+ method="post">
       <div><input type="text" id="username" name="username" class="input-box" placeholder="아이디"></div>
-      <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
       <div><input type="password" id="password" name="password" class="input-box" placeholder="비밀번호"></div>
-      <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
       <div><input type="text" id="name" name="name" class="input-box" placeholder="이름"></div>
-      <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-      <!--/*@thymesVar id="errorMessage" type="com"*/-->
-      <div th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></div>
+      <!--/*@thymesVar id="notNull" type="com"*/-->
+      <div th:if="${notNull}" th:text="${notNull}" class="mb-1 red"></div>
+      <!--/*@thymesVar id="existUsername" type="com"*/-->
+      <div th:if="${existUsername}" th:text="${existUsername}" class="mb-1 red"></div>
       <div><input type="submit" class="input-box" value="회원가입"></div>
     </form>
   </div>

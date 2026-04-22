@@ -77,6 +77,10 @@
     margin-left: 10px;
 }
 
+.mb-1 {
+    margin-bottom: 10px;
+}
+
 .mr-1 {
     margin-right: 10px;
 }
@@ -139,3 +143,6 @@
     margin-bottom: 10px;
 }
 
+.red {
+    color: red;
+}

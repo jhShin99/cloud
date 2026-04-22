@@ -2,11 +2,9 @@ package com.example.cloud.controller;
 
 import com.example.cloud.domain.User;
 import com.example.cloud.service.UserService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/join")
-    public String joinForm(Model model) {
-        model.addAttribute("user", new User());
+    public String joinForm() {
         return "user/join";
     }
 
@@ -36,15 +33,17 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String join(@Valid User user, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String join(User user, RedirectAttributes redirectAttributes) {
 
-        if (result.hasErrors()) {
-            return "user/join";
+        if (!StringUtils.hasText(user.getUsername()) || !StringUtils.hasText(user.getPassword()) || !StringUtils.hasText(user.getName())) {
+            redirectAttributes.addFlashAttribute("notNull", "빈칸을 입력하세요.");
+            return "redirect:/user/join";
         }
 
         User findByUsername = userService.findByUsername(user.getUsername());
+
         if (findByUsername != null) {
-            redirectAttributes.addFlashAttribute("errorMessage", "이미 존재하는 아이디입니다.");
+            redirectAttributes.addFlashAttribute("existUsername", "이미 존재하는 아이디입니다.");
             return "redirect:/user/join";
         }
         userService.join(user);
