@@ -28,7 +28,14 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login() {
+    public String login(String username, String password, RedirectAttributes redirectAttributes) {
+        User loginUser = userService.login(username, password);
+
+        if (loginUser == null) {
+            redirectAttributes.addFlashAttribute("noUser", "아이디 또는 비밀번호가 일치하지 않습니다.");
+            return "redirect:/user/login";
+        }
+
         return null;
     }
 

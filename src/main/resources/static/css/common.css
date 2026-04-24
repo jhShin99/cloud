@@ -4,65 +4,62 @@
 }
 
 .header {
-    height: 8vh;
+    height: 5vh;
     display: flex;
     align-items: center;
-}
-
-.nav_container {
-    background-color: lightskyblue;
-    height: 7vh;
+    background-color: cornflowerblue;
 }
 
 .nav {
-    width: 80%;
-    height: 7vh;
     display: flex;
-    text-align: center;
-    align-items: center;
-    margin: 0 auto;
+    flex-direction: column;
+    background-color: lightgray;
+    width: 3vw;
+    height: 95vh;
 }
 
-
-.nav_items {
-    width: 100px;
-    height: 7vh;
-    color: whitesmoke;
-    font-size: 20px;
-    cursor: pointer;
+.nav-item {
+    width: 3vw;
+    height: 57px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-content: center;
 }
 
-.nav_items:hover {
-    background-color: tomato;
+.nav-item.active {
+    background-color: white;
 }
 
 .main {
-    background-color: lightcyan;
-    height: 80vh;
-    background-image: url("/img/cloud.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 97vw;
+    height: 95vh;
+    background-color: cornsilk;
 }
 
-.footer {
+.main-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 5vh;
-    background-color: lightblue;
 }
 
 .logo {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.login-join-logo {
     width: 72px;
     height: 72px;
     cursor: pointer;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.m-auto {
+    margin: 0 auto;
 }
 
 .ml-auto {
@@ -75,6 +72,10 @@
 
 .ml-1 {
     margin-left: 10px;
+}
+
+.ml-10 {
+    margin-left: 100px;
 }
 
 .mb-1 {
@@ -145,4 +146,18 @@
 
 .red {
     color: red;
+}
+
+.search-box {
+    background-color: white;
+    display: flex;
+    width: 330px;
+    align-items: center;
+}
+
+.search-engine {
+    width: 300px;
+    height: 30px;
+    border: none;
+    outline: none;
 }

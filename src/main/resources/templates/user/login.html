@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +9,20 @@
 </head>
 <body>
 <div class="flex-center mt-10">
-    <div><img src="/img/logo.png" class="logo"></div>
+    <div><img src="/img/logo.png" class="login-join-logo"></div>
     <div>
         <h1 class="ml-1 lightblue pointer" onclick="goMain()">CLOUD</h1>
     </div>
 </div>
 <div class="flex-center">
     <div class="login-box">
-        <div><input type="text" class="input-box" placeholder="아이디"></div>
-        <div><input type="password" class="input-box" placeholder="비밀번호"></div>
-        <div><input type="submit" class="input-box" value="로그인"></div>
+        <form action="/user/login" method="post">
+            <div><input type="text" id="username" name="username" class="input-box" placeholder="아이디"></div>
+            <div><input type="password" id="password" name="password" class="input-box" placeholder="비밀번호"></div>
+            <!--/*@thymesVar id="noUser" type="com"*/-->
+            <div th:if="${noUser}" th:text="${noUser}" class="red mb-1"></div>
+            <div><input type="submit" class="input-box" value="로그인"></div>
+        </form>
     </div>
 </div>
 </body>
