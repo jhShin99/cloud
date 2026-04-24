@@ -31,14 +31,20 @@
     background-color: white;
 }
 
+.main-container {
+    display: flex;
+}
+
 .main {
     width: 97vw;
     height: 95vh;
     background-color: cornsilk;
 }
 
-.main-container {
-    display: flex;
+.main-content {
+    width: 50%;
+    height: 95vh;
+    margin: 0 auto;
 }
 
 .logo {

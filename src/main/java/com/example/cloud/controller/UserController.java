@@ -2,6 +2,7 @@ package com.example.cloud.controller;
 
 import com.example.cloud.domain.User;
 import com.example.cloud.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(String username, String password, RedirectAttributes redirectAttributes) {
+    public String login(String username, String password, RedirectAttributes redirectAttributes, HttpSession session) {
         User loginUser = userService.login(username, password);
 
         if (loginUser == null) {
@@ -36,7 +37,8 @@ public class UserController {
             return "redirect:/user/login";
         }
 
-        return null;
+        session.setAttribute("loginUser", loginUser);
+        return "redirect:/";
     }
 
     @PostMapping("/join")
