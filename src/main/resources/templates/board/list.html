@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="/js/common.js"></script>
+  <title>Document</title>
+</head>
+<body>
+<div th:replace="~{fragments/fragments :: header}"></div>
+<div class="main-container">
+  <div th:replace="~{fragments/fragments :: nav}"></div>
+  <div class="main">
+    <div class="main-content mt-3">
+      <div class="notice-header">
+        <h1 class="mb-1" style="color: cornflowerblue">공지사항</h1>
+        <hr style="height: 2px; background-color: cornflowerblue; border: 0">
+      </div>
+      <div class="notice-body">
+        <table class="table">
+          <colgroup>
+            <col style="width: 10%">
+            <col style="width: 60%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+          </colgroup>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>작성일</th>
+            <th>조회</th>
+          </tr>
+          <tr>
+            <th:block th:if="${boardCount == 0}">
+              <td colspan="5" class="t-center">등록된 게시물이 없습니다.</td>
+            </th:block>
+          </tr>
+        </table>
+      </div>
+      <div class="notice-footer">
+        <button class="write-button">글쓰기</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

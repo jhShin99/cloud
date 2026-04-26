@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="header" th:fragment="header">
+  <div onclick="goMain()"><img src="/img/logo.png" class="logo ml-1"></div>
+  <div onclick="goMain()"><h3 class="ml-1 lightblue pointer">CLOUD</h3></div>
+  <div class="ml-10">
+    <div class="search-box">
+      <input type="text" class="search-engine">
+      <img src="/img/search.png" class="nav-icon pointer">
+    </div>
+  </div>
+  <div class="ml-auto mr-3">
+    <div th:if="${session.loginUser == null}">
+      <a href="/user/login" class="basic">로그인</a> | <a href="/user/join" class="basic">회원가입</a>
+    </div>
+    <div th:if="${session.loginUser != null}">
+      <span th:text="${session.loginUser.username}"></span> 님 | <span class="pointer" onclick="logout()">로그아웃</span>
+    </div>
+  </div>
+</div>
+
+<div class="nav" th:fragment="nav">
+  <div class="nav-item" onclick="goBoard()"><img class="nav-icon m-auto pointer" src="/img/notice.png"></div>
+</div>
+</body>
+</html>

@@ -9,6 +9,10 @@ function goMain() {
     location.href = '/';
 }
 
+function goBoard() {
+    location.href = '/board/list';
+}
+
 function logout() {
     location.href = '/user/logout';
 }

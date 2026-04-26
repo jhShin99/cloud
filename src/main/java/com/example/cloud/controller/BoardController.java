@@ -18,6 +18,6 @@ public class BoardController {
     public String list(Model model) {
         int boardCount = boardService.getBoardCount();
         model.addAttribute("boardCount", boardCount);
-        return "index";
+        return "board/list";
     }
 }
