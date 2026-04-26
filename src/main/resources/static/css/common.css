@@ -38,12 +38,11 @@
 .main {
     width: 97vw;
     height: 95vh;
-    background-color: cornsilk;
 }
 
 .main-content {
     width: 50%;
-    height: 95vh;
+    height: 85vh;
     margin: 0 auto;
 }
 
@@ -60,8 +59,8 @@
 }
 
 .nav-icon {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 }
 
 .m-auto {
@@ -70,6 +69,10 @@
 
 .ml-auto {
     margin-left: auto;
+}
+
+.mt-3 {
+    margin-top: 30px;
 }
 
 .mt-10 {
@@ -166,4 +169,27 @@
     height: 30px;
     border: none;
     outline: none;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid black;
+}
+
+.notice-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.write-button {
+    cursor: pointer;
+    border: 1px solid gray;
+    background-color: cornflowerblue;
+    padding: 7px 12px;
+    color: white;
 }

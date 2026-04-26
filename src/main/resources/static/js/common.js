@@ -8,3 +8,7 @@ $(function () {
 function goMain() {
     location.href = '/';
 }
+
+function logout() {
+    location.href = '/user/logout';
+}

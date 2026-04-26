@@ -22,15 +22,53 @@
         </div>
     </div>
     <div class="ml-auto mr-3">
-        <div><a href="/user/login" class="basic">로그인</a> | <a href="/user/join" class="basic">회원가입</a></div>
+        <div th:if="${session.loginUser == null}">
+            <a href="/user/login" class="basic">로그인</a> | <a href="/user/join" class="basic">회원가입</a>
+        </div>
+        <div th:if="${session.loginUser != null}">
+            <span th:text="${session.loginUser.username}"></span> 님 | <span class="pointer" onclick="logout()">로그아웃</span>
+        </div>
     </div>
 </div>
 <div class="main-container">
     <div class="nav">
-        <div class="nav-item"><img class="nav-icon m-auto pointer" src="/img/board.png"></div>
+        <div class="nav-item"><img class="nav-icon m-auto pointer" src="/img/notice.png"></div>
     </div>
     <div class="main">
-        <div class="main-content"></div>
+        <div class="main-content mt-3">
+            <div class="notice-header">
+                <h1 class="mb-1" style="color: cornflowerblue">공지사항</h1>
+                <hr style="height: 2px; background-color: cornflowerblue; border: 0">
+            </div>
+            <div class="notice-body">
+                <table class="table">
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 60%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>글쓴이</th>
+                        <th>작성일</th>
+                        <th>조회</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>test</td>
+                        <td>운영자</td>
+                        <td>2026-04-25</td>
+                        <td>100</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="notice-footer">
+                <button class="write-button">글쓰기</button>
+            </div>
+        </div>
     </div>
 </div>
 </body>
