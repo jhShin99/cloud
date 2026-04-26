@@ -180,7 +180,7 @@ th, td {
     border-bottom: 1px solid black;
 }
 
-.notice-footer {
+.board-footer {
     margin-top: 10px;
     display: flex;
     justify-content: end;

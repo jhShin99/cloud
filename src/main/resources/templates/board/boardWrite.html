@@ -17,35 +17,9 @@
   <div th:replace="~{fragments/fragments :: nav}"></div>
   <div class="main">
     <div class="main-content mt-3">
-      <div class="notice-header">
-        <h1 class="mb-1" style="color: cornflowerblue">공지사항</h1>
+      <div class="board-header">
+        <h1 class="mb-1" style="color: cornflowerblue">자유게시판</h1>
         <hr style="height: 2px; background-color: cornflowerblue; border: 0">
-      </div>
-      <div class="notice-body">
-        <table class="table">
-          <colgroup>
-            <col style="width: 10%">
-            <col style="width: 60%">
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 10%">
-          </colgroup>
-          <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-            <th>작성일</th>
-            <th>조회</th>
-          </tr>
-          <tr>
-            <th:block th:if="${boardCount == 0}">
-              <td colspan="5" class="t-center">등록된 게시물이 없습니다.</td>
-            </th:block>
-          </tr>
-        </table>
-      </div>
-      <div class="notice-footer">
-        <button class="write-button">글쓰기</button>
       </div>
     </div>
   </div>
