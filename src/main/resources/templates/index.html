@@ -57,11 +57,9 @@
                         <th>조회</th>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>test</td>
-                        <td>운영자</td>
-                        <td>2026-04-25</td>
-                        <td>100</td>
+                    <th:block th:if="${boardCount == 0}">
+                        <td colspan="5" class="t-center">등록된 게시물이 없습니다.</td>
+                    </th:block>
                     </tr>
                 </table>
             </div>
