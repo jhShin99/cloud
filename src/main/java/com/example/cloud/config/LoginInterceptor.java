@@ -19,7 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         Object user = session.getAttribute("loginUser");
 
         if (user == null) {
-            response.sendRedirect("/user/login");
+            response.sendRedirect("/user/login?error=loginRequired");
             return false; // 컨트롤러 실행 안함
         }
 
