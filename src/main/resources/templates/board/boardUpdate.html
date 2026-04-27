@@ -18,17 +18,18 @@
         <h1 class="mb-1 cornflowerblue pointer" onclick="goBoardList()">자유게시판</h1>
         <hr class="mb-1 hr">
       </div>
-      <form action="/board/write" method="post" onsubmit="return confirmWrite()">
+      <form action="/board/update" method="post" onsubmit="return confirmUpdate()">
         <div class="board-write-body">
+          <input type="hidden" id="id" name="id" th:value="${board.id}">
           <label for="title"></label>
-          <input type="text" placeholder="제목을 입력해 주세요." id="title" name="title" class="board-name mb-1">
+          <input type="text" placeholder="제목을 입력해 주세요." id="title" name="title" th:value="${board.title}" class="board-name mb-1">
           <input type="hidden" id="userId" name="userId" value="admin">
           <label for="content"></label>
-          <textarea placeholder="내용을 입력해 주세요." class="resize-none" id="content" name="content" cols="30" rows="30"></textarea>
+          <textarea class="resize-none" id="content" name="content" cols="30" th:text="${board.content}" rows="30"></textarea>
         </div>
         <div class="board-footer">
-          <button type="button" class="undo-button mr-05" onclick="undoBoardWrite()">취소</button>
-          <button type="submit" class="execute-button">등록</button>
+          <button type="button" class="undo-button mr-05" th:onclick="|undoUpdate('${board.id}')|">취소</button>
+          <button type="submit" class="execute-button">저장</button>
         </div>
       </form>
     </div>

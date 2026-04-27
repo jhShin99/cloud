@@ -4,6 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.cloud.mapper.BoardMapper">
     <select id="getBoardCount" resultType="Integer">
-        SELECT count(*) FROM board;
+        SELECT count(*) FROM board
     </select>
+
+    <select id="selectBoardList" resultType="Board">
+        SELECT * FROM board
+    </select>
+
+    <select id="selectBoardById" resultType="Board">
+        SELECT * FROM board WHERE id = #{id}
+    </select>
+
+    <insert id="insertBoard" parameterType="Board">
+        INSERT INTO board (title, content, user_id) VALUES (#{title}, #{content}, #{userId})
+    </insert>
+
+    <delete id="deleteBoardById" parameterType="Long">
+        DELETE FROM board WHERE id = #{id}
+    </delete>
+
+    <update id="updateBoard" parameterType="Board">
+        UPDATE board set title = #{title}, content = #{content} WHERE id = #{id}
+    </update>
+
+    <update id="updateViewCount">
+        UPDATE board set view_count = #{viewCount} + 1 WHERE id = #{id}
+    </update>
 </mapper>

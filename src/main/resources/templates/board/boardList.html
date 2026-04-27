@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/common.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="/js/common.js"></script>
   <title>Document</title>
@@ -18,7 +15,7 @@
   <div class="main">
     <div class="main-content mt-3">
       <div class="board-header">
-        <h1 class="mb-1" style="color: cornflowerblue">자유게시판</h1>
+        <h1 class="mb-1 cornflowerblue pointer" onclick="goBoardList()">자유게시판</h1>
         <hr class="mb-1 hr">
       </div>
       <div class="board-body">
@@ -38,9 +35,22 @@
             <th>조회</th>
           </tr>
           <tr>
-            <th:block th:if="${boardCount == 0}">
-              <td colspan="5" class="t-center">등록된 게시물이 없습니다.</td>
-            </th:block>
+          <!-- 데이터 없을 때 -->
+          <tr th:if="${boardCount == 0}">
+            <td colspan="5" class="t-center">
+              등록된 게시물이 없습니다.
+            </td>
+          </tr>
+          <!-- 데이터 있을 때 -->
+          <tr th:each="board : ${boardList}">
+            <td th:text="${board.id}" class="t-center"></td>
+            <td>
+              <a th:href="@{/board/read/{id}(id=${board.id})}"
+                 th:text="${board.title}" class="board-title"></a>
+            </td>
+            <td th:text="${board.userId}" class="t-center"></td>
+            <td th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd')}" class="t-center"></td>
+            <td th:text="${board.viewCount}" class="t-center"></td>
           </tr>
         </table>
       </div>

@@ -9,7 +9,7 @@ function goMain() {
     location.href = '/';
 }
 
-function goBoard() {
+function goBoardList() {
     location.href = '/board/list';
 }
 
@@ -23,4 +23,26 @@ function undoBoardWrite() {
 
 function logout() {
     location.href = '/user/logout';
+}
+
+function deleteBoardById(id) {
+    if (confirm("삭제하시겠습니까?")) {
+        location.href = '/board/delete/' + id;
+    }
+}
+
+function updateBoardById(id) {
+    location.href = '/board/update/' + id;
+}
+
+function undoUpdate(id) {
+    location.href = '/board/read/' + id;
+}
+
+function confirmWrite() {
+    return confirm("게시글을 등록하시겠습니까?");
+}
+
+function confirmUpdate() {
+    return confirm("게시글을 수정하시겠습니까?");
 }

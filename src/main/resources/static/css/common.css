@@ -96,6 +96,14 @@
     margin-bottom: 10px;
 }
 
+.mb-05 {
+    margin-bottom: 5px;
+}
+
+.ml-05 {
+    margin-left: 5px;
+}
+
 .mr-05 {
     margin-right: 5px;
 }
@@ -213,6 +221,22 @@ th, td {
     color: white;
 }
 
+.update-button {
+    cursor: pointer;
+    border: 1px solid gray;
+    background-color: green;
+    padding: 7px 12px;
+    color: white;
+}
+
+.delete-button {
+    cursor: pointer;
+    border: 1px solid gray;
+    background-color: red;
+    padding: 7px 12px;
+    color: white;
+}
+
 .undo-button {
     cursor: pointer;
     border: 1px solid gray;
@@ -231,4 +255,22 @@ th, td {
 
 .hr {
     height: 2px; background-color: cornflowerblue; border: 0
+}
+
+.board-title {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cornflowerblue {
+    color: cornflowerblue;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.writer-date-view {
+    display: flex;
 }
