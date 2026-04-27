@@ -63,6 +63,11 @@
     height: 25px;
 }
 
+.search-icon {
+    width: 20px;
+    height: 20px;
+}
+
 .m-auto {
     margin: 0 auto;
 }
@@ -89,6 +94,10 @@
 
 .mb-1 {
     margin-bottom: 10px;
+}
+
+.mr-05 {
+    margin-right: 5px;
 }
 
 .mr-1 {
@@ -180,13 +189,23 @@ th, td {
     border-bottom: 1px solid black;
 }
 
+.board-write-body {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.board-name {
+    height: 2rem;
+}
+
 .board-footer {
     margin-top: 10px;
     display: flex;
     justify-content: end;
 }
 
-.write-button {
+.execute-button {
     cursor: pointer;
     border: 1px solid gray;
     background-color: cornflowerblue;
@@ -194,6 +213,22 @@ th, td {
     color: white;
 }
 
+.undo-button {
+    cursor: pointer;
+    border: 1px solid gray;
+    background-color: lightgray;
+    padding: 7px 12px;
+    color: white;
+}
+
 .t-center {
     text-align: center;
+}
+
+.resize-none {
+    resize: none;
+}
+
+.hr {
+    height: 2px; background-color: cornflowerblue; border: 0
 }

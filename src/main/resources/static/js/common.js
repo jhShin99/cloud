@@ -13,6 +13,14 @@ function goBoard() {
     location.href = '/board/list';
 }
 
+function goBoardWrite() {
+    location.href = '/board/write';
+}
+
+function undoBoardWrite() {
+    location.href = '/board/list';
+}
+
 function logout() {
     location.href = '/user/logout';
 }
