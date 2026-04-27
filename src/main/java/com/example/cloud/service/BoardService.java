@@ -37,7 +37,7 @@ public class BoardService {
         boardMapper.deleteBoardById(id);
     }
 
-    public void increaseViewCount(Board board) {
-        boardMapper.updateViewCount(board);
+    public void increaseViewCount(Long id) {
+        boardMapper.updateViewCount(id);
     }
 }

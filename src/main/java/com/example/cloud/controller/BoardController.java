@@ -42,6 +42,7 @@ public class BoardController {
 
     @GetMapping("/read/{id}")
     public String read(@PathVariable Long id, Model model) {
+        boardService.increaseViewCount(id);
         Board board = boardService.getBoardById(id);
         model.addAttribute("board", board);
         return "/board/boardRead";

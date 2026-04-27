@@ -28,6 +28,6 @@
     </update>
 
     <update id="updateViewCount">
-        UPDATE board set view_count = #{viewCount} + 1 WHERE id = #{id}
+        UPDATE board set view_count = view_count + 1 WHERE id = #{id}
     </update>
 </mapper>

@@ -18,5 +18,5 @@ public interface BoardMapper {
 
     void updateBoard(Board board);
 
-    void updateViewCount(Board board);
+    void updateViewCount(Long id);
 }
