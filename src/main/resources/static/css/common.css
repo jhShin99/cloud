@@ -337,3 +337,12 @@ th, td {
     height: 60px;
     cursor: pointer;
 }
+
+.comment {
+    width: 100%;
+    height: 150px;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}

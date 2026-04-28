@@ -45,7 +45,7 @@
           <tr th:each="board : ${boardList}">
             <td th:text="${board.id}" class="t-center"></td>
             <td>
-              <a th:href="@{/board/read/{id}(id=${board.id})}"
+              <a th:href="@{/board/read(id=${board.id}, page=${page})}"
                  th:text="${board.title}" class="board-title"></a>
             </td>
             <td th:text="${board.userId}" class="t-center"></td>
@@ -55,7 +55,7 @@
         </table>
       </div>
       <div class="board-footer">
-        <button type="button" class="execute-button" onclick="goBoardWrite()">글쓰기</button>
+        <button type="button" class="execute-button mr-05" onclick="goBoardWrite()">글쓰기</button>
       </div>
 
       <!-- 페이지네이션 -->

@@ -30,7 +30,7 @@
           <div id="editor"></div>
         </div>
         <div class="board-footer">
-          <button type="button" class="undo-button mr-05" th:onclick="|undoUpdate('${board.id}')|">취소</button>
+          <button type="button" class="undo-button mr-05" onclick="history.back()">취소</button>
           <button type="submit" class="execute-button">저장</button>
         </div>
       </form>
