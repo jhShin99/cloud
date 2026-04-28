@@ -9,8 +9,8 @@
     <title>Document</title>
 </head>
 <body>
-<div th:replace="~{fragments/fragments :: header}"></div>
-<div th:replace="~{fragments/fragments :: nav}"></div>
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{fragments/nav :: nav}"></div>
 <div class="main-container">
     <div class="main">
         <div class="main-content mt-3">
@@ -48,9 +48,12 @@
                 <textarea class="comment" placeholder="타인의 권리를 침해하거나 명예를 훼손하는 댓글은 운영원칙 및 관련 법률에 제재를 받을 수 있습니다."></textarea>
                 <div style="display: flex; justify-content: end;"><button class="execute-button mr-05">등록</button></div>
             </div>
-            <hr class="mt-1 hr mb-1">
+            <hr class="mt-1 hr">
         </div>
     </div>
+</div>
+<div class="main-content mt-10">
+    <div th:replace="~{fragments/boardList :: boardList}"></div>
 </div>
 </body>
 </html>

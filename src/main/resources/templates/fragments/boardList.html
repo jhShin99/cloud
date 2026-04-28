@@ -1,0 +1,81 @@
+<div th:fragment="boardList">
+    <div class="board-body">
+        <table class="table">
+            <colgroup>
+                <col style="width: 10%">
+                <col style="width: 60%">
+                <col style="width: 10%">
+                <col style="width: 10%">
+                <col style="width: 10%">
+            </colgroup>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>작성일</th>
+                <th>조회</th>
+            </tr>
+            <tr>
+                <!-- 데이터 없을 때 -->
+            <tr th:if="${boardCount == 0}">
+                <td colspan="5" class="t-center">
+                    등록된 게시물이 없습니다.
+                </td>
+            </tr>
+            <!-- 데이터 있을 때 -->
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.id}" class="t-center"></td>
+                <td>
+                    <a th:href="@{/board/read(id=${board.id}, page=${page})}"
+                       th:text="${board.title}" class="board-title"></a>
+                </td>
+                <td th:text="${board.userId}" class="t-center"></td>
+                <td th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd')}" class="t-center"></td>
+                <td th:text="${board.viewCount}" class="t-center"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="board-footer">
+        <button type="button" class="execute-button mr-05" onclick="goBoardWrite()">글쓰기</button>
+    </div>
+
+    <!-- 페이지네이션 -->
+    <div class="pagination mt-3 pb-5" th:if="${totalPage > 0}">
+        <a th:if="${page > 1}"
+           th:href="@{/board/list(page=1)}"
+           class="pagination-link">
+            <img src="/img/pagination/angles-left.png" style="width: 15px; height: 15px">
+        </a>
+
+        <a th:if="${startPage > 1}"
+           th:href="@{/board/list(page=${startPage - 1})}"
+           class="pagination-link">
+            <img src="/img/pagination/angle-left.png" style="width: 15px; height: 15px">
+        </a>
+
+        <span th:each="num : ${#numbers.sequence(startPage, endPage)}">
+        <a th:if="${num != page}"
+           th:href="@{/board/list(page=${num})}"
+           th:text="${num}"
+           class="pagination-link">
+        </a>
+
+        <strong th:if="${num == page}"
+                th:text="${num}"
+                class="pagination-link active">
+        </strong>
+        </span>
+
+        <a th:if="${endPage < totalPage}"
+           th:href="@{/board/list(page=${endPage + 1})}"
+           class="pagination-link">
+            <img src="/img/pagination/angle-right.png" style="width: 15px; height: 15px">
+        </a>
+
+        <a th:if="${page < totalPage}"
+           th:href="@{/board/list(page=${totalPage})}"
+           class="pagination-link">
+            <img src="/img/pagination/angles-right.png" style="width: 15px; height: 15px">
+        </a>
+    </div>
+</div>
