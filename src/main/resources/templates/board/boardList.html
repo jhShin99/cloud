@@ -60,47 +60,41 @@
 
       <!-- 페이지네이션 -->
       <div class="pagination mt-3" th:if="${totalPage > 0}">
-        <!-- 맨 처음 ( << ) -->
         <a th:if="${page > 1}"
            th:href="@{/board/list(page=1)}"
-           class="page-link">
-          <img src="/img/pagination/angles-left.png" style="width: 20px; height: 20px;">
+           class="pagination-link">
+          <img src="/img/pagination/angles-left.png" style="width: 15px; height: 15px">
         </a>
 
-        <!-- 이전 블록 ( < ) -->
         <a th:if="${startPage > 1}"
            th:href="@{/board/list(page=${startPage - 1})}"
-           class="page-link">
-          <img src="/img/pagination/angle-left.png" style="width: 20px; height: 20px;">
+           class="pagination-link">
+          <img src="/img/pagination/angle-left.png" style="width: 15px; height: 15px">
         </a>
 
-        <!-- 페이지 번호 -->
         <span th:each="num : ${#numbers.sequence(startPage, endPage)}">
-
         <a th:if="${num != page}"
            th:href="@{/board/list(page=${num})}"
            th:text="${num}"
-           class="page-link">
+           class="pagination-link">
         </a>
 
         <strong th:if="${num == page}"
                 th:text="${num}"
-                class="page-link">
+                class="pagination-link active">
         </strong>
         </span>
 
-        <!-- 다음 블록 ( > ) -->
         <a th:if="${endPage < totalPage}"
            th:href="@{/board/list(page=${endPage + 1})}"
-           class="page-link">
-          <img src="/img/pagination/angle-right.png" style="width: 20px; height: 20px;">
+           class="pagination-link">
+          <img src="/img/pagination/angle-right.png" style="width: 15px; height: 15px">
         </a>
 
-        <!-- 맨 끝 ( >> ) -->
         <a th:if="${page < totalPage}"
            th:href="@{/board/list(page=${totalPage})}"
-           class="page-link">
-          <img src="/img/pagination/angles-right.png" style="width: 20px; height: 20px;">
+           class="pagination-link">
+          <img src="/img/pagination/angles-right.png" style="width: 15px; height: 15px">
         </a>
       </div>
     </div>

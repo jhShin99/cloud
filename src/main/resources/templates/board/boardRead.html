@@ -29,14 +29,15 @@
                         <span class="ml-auto">조회 [[${board.viewCount}]]</span>
                     </div>
                     <input type="hidden" id="userId" name="userId" value="admin">
-                    <label for="content"></label>
-                    <textarea class="resize-none" id="content" name="content" cols="30" th:text="${board.content}" rows="30" readonly></textarea>
-                </div>
-                <div th:if="${session.loginUser != null and session.loginUser.username == board.userId}" class="board-footer">
-                    <button type="button" class="update-button mr-05" th:onclick="|updateBoardById('${board.id}')|">수정</button>
-                    <button type="button" class="delete-button" th:onclick="|deleteBoardById('${board.id}')|">삭제</button>
+                    <hr class="hr2 mb-1">
+                    <div class="content-view" th:utext="${board.content}"></div>
                 </div>
             </form>
+            <hr class="mt-1 hr">
+            <div th:if="${session.loginUser != null and session.loginUser.username == board.userId}" class="board-footer">
+                <button type="button" class="update-button mr-05" th:onclick="|updateBoardById('${board.id}')|">수정</button>
+                <button type="button" class="delete-button" th:onclick="|deleteBoardById('${board.id}')|">삭제</button>
+            </div>
         </div>
     </div>
 </div>

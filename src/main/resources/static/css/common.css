@@ -133,13 +133,6 @@
     color: black;
 }
 
-.playwrite-nz-guides-regular {
-    font-family: "Playwrite NZ Guides", cursive;
-    font-weight: 400;
-    font-size: 50px;
-    font-style: normal;
-}
-
 .flex-center {
     display: flex;
     justify-content: center;
@@ -198,7 +191,7 @@
 }
 
 th, td {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid lightgray;
 }
 
 .board-write-body {
@@ -258,7 +251,15 @@ th, td {
 }
 
 .hr {
-    height: 2px; background-color: cornflowerblue; border: 0
+    height: 2px;
+    background-color: cornflowerblue;
+    border: 0
+}
+
+.hr2 {
+    height: 1px;
+    background-color: lightgray;
+    border: 0;
 }
 
 .board-title {
@@ -282,8 +283,47 @@ th, td {
 .pagination {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 30px;
 }
 
-.page-link {
-    margin: 10px;
+.pagination span {
+    display: flex;
+    gap: 6px;
+}
+
+.pagination-link {
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.pagination-link:hover {
+    background-color: #f3f4f6;
+    border-color: #bbb;
+}
+
+.pagination-link.active {
+    background-color: cornflowerblue;
+    border-color: #333;
+    color: #fff;
+    font-weight: bold;
+    cursor: default;
+}
+
+.content-view {
+    min-height: 300px;
 }

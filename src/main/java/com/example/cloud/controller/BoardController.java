@@ -20,7 +20,7 @@ public class BoardController {
     @GetMapping("/list")
     public String list(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
 
-        int size = 10; // 한 페이지 게시글 수
+        int size = 20; // 한 페이지 게시글 수
         int offset = (page - 1) * size;
 
         int boardCount = boardService.getBoardCount();
@@ -54,7 +54,7 @@ public class BoardController {
     }
 
     @GetMapping("/read/{id}")
-    public String read(@PathVariable Long id, Model model) {
+    public String read(@PathVariable("id") Long id, Model model) {
         boardService.increaseViewCount(id);
         Board board = boardService.getBoardById(id);
         model.addAttribute("board", board);
@@ -62,13 +62,13 @@ public class BoardController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
+    public String delete(@PathVariable("id") Long id) {
         boardService.removeBoard(id);
         return "redirect:/board/list";
     }
 
     @GetMapping("/update/{id}")
-    public String updateForm(@PathVariable Long id, Model model) {
+    public String updateForm(@PathVariable("id") Long id, Model model) {
         Board board = boardService.getBoardById(id);
         model.addAttribute("board", board);
         return "board/boardUpdate";

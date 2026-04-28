@@ -9,6 +9,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -29,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(String username, String password, RedirectAttributes redirectAttributes, HttpSession session) {
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, RedirectAttributes redirectAttributes, HttpSession session) {
         User loginUser = userService.login(username, password);
 
         if (loginUser == null) {
@@ -48,7 +49,7 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String join(User user, RedirectAttributes redirectAttributes) {
+    public String join(@RequestParam("user") User user, RedirectAttributes redirectAttributes) {
 
         if (!StringUtils.hasText(user.getUsername()) || !StringUtils.hasText(user.getPassword()) || !StringUtils.hasText(user.getName())) {
             redirectAttributes.addFlashAttribute("notNull", "빈칸을 입력하세요.");

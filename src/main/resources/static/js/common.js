@@ -40,9 +40,20 @@ function undoUpdate(id) {
 }
 
 function confirmWrite() {
-    return confirm("게시글을 등록하시겠습니까?");
+
+    if (confirm("게시글을 등록하시겠습니까?")) {
+        // 에디터 내용 가져오기
+        const content = editor.getHTML();
+
+        // hidden input에 넣기
+        document.getElementById('content').value = content;
+        return true;
+    }
+    return false;
 }
 
 function confirmUpdate() {
+    const content = editor.getHTML();
+    document.getElementById('content').value = content;
     return confirm("게시글을 수정하시겠습니까?");
 }
