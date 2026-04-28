@@ -76,6 +76,10 @@
     margin-left: auto;
 }
 
+.mt-1 {
+    margin-top: 10px;
+}
+
 .mt-3 {
     margin-top: 30px;
 }
@@ -273,4 +277,13 @@ th, td {
 
 .writer-date-view {
     display: flex;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.page-link {
+    margin: 10px;
 }

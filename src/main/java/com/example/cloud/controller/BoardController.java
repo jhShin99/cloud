@@ -18,7 +18,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/list")
-    public String list(@RequestParam(defaultValue = "1") int page, Model model) {
+    public String list(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
 
         int size = 10; // 한 페이지 게시글 수
         int offset = (page - 1) * size;
@@ -26,12 +26,19 @@ public class BoardController {
         int boardCount = boardService.getBoardCount();
         int totalPage = (int) Math.ceil((double) boardCount / size);
 
+        int pageBlockSize = 10;
+        int startPage = ((page - 1) / pageBlockSize) * pageBlockSize + 1;
+        int endPage = Math.min(startPage + pageBlockSize - 1, totalPage);
+
         List<Board> boardList = boardService.getBoardList(offset, size);
 
         model.addAttribute("boardList", boardList);
         model.addAttribute("boardCount", boardCount);
         model.addAttribute("page", page);
         model.addAttribute("totalPage", totalPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+
         return "board/boardList";
     }
 
@@ -51,7 +58,7 @@ public class BoardController {
         boardService.increaseViewCount(id);
         Board board = boardService.getBoardById(id);
         model.addAttribute("board", board);
-        return "/board/boardRead";
+        return "board/boardRead";
     }
 
     @GetMapping("/delete/{id}")
