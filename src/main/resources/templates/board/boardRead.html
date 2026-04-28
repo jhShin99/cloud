@@ -21,7 +21,6 @@
             <form>
                 <div class="board-write-body">
                     <input type="hidden" id="id" name="id" th:value="${board.id}">
-<!--                    <input type="text" id="title" name="title" th:value="${board.title}" class="board-name mb-1" readonly>-->
                     <div class="mb-05"><span th:text="${board.title}" class="bold"></span></div>
                     <div class="writer-date-view mb-1">
                         <span th:text="${board.userId}"></span>
@@ -33,7 +32,7 @@
                     <label for="content"></label>
                     <textarea class="resize-none" id="content" name="content" cols="30" th:text="${board.content}" rows="30" readonly></textarea>
                 </div>
-                <div class="board-footer">
+                <div th:if="${session.loginUser != null and session.loginUser.username == board.userId}" class="board-footer">
                     <button type="button" class="update-button mr-05" th:onclick="|updateBoardById('${board.id}')|">수정</button>
                     <button type="button" class="delete-button" th:onclick="|deleteBoardById('${board.id}')|">삭제</button>
                 </div>

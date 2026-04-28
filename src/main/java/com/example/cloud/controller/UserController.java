@@ -62,6 +62,6 @@ public class UserController {
             return "redirect:/user/join";
         }
         userService.join(user);
-        return "redirect:/user/join";
+        return "redirect:/user/login";
     }
 }

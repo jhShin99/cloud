@@ -14,11 +14,11 @@ public class BoardService {
     private final BoardMapper boardMapper;
 
     public int getBoardCount() {
-        return boardMapper.getBoardCount();
+        return boardMapper.selectBoardCount();
     }
 
-    public List<Board> getBoardList() {
-        return boardMapper.selectBoardList();
+    public List<Board> getBoardList(int offset, int size) {
+        return boardMapper.selectBoardList(offset, size);
     }
 
     public Board getBoardById(Long id) {

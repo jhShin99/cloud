@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,11 +18,20 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(@RequestParam(defaultValue = "1") int page, Model model) {
+
+        int size = 10; // 한 페이지 게시글 수
+        int offset = (page - 1) * size;
+
         int boardCount = boardService.getBoardCount();
-        List<Board> boardList = boardService.getBoardList();
-        model.addAttribute("boardCount", boardCount);
+        int totalPage = (int) Math.ceil((double) boardCount / size);
+
+        List<Board> boardList = boardService.getBoardList(offset, size);
+
         model.addAttribute("boardList", boardList);
+        model.addAttribute("boardCount", boardCount);
+        model.addAttribute("page", page);
+        model.addAttribute("totalPage", totalPage);
         return "board/boardList";
     }
 

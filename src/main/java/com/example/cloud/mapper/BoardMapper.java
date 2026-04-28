@@ -1,14 +1,15 @@
 package com.example.cloud.mapper;
 
 import com.example.cloud.domain.Board;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface BoardMapper {
 
-    int getBoardCount();
+    int selectBoardCount();
 
-    List<Board> selectBoardList();
+    List<Board> selectBoardList(@Param("offset") int offset, @Param("size") int size);
 
     Board selectBoardById(Long id);
 

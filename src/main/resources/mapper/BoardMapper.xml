@@ -3,12 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.cloud.mapper.BoardMapper">
-    <select id="getBoardCount" resultType="Integer">
+    <select id="selectBoardCount" resultType="Integer">
         SELECT count(*) FROM board
     </select>
 
     <select id="selectBoardList" resultType="Board">
-        SELECT * FROM board
+        SELECT * FROM board ORDER BY id DESC LIMIT #{size} OFFSET #{offset}
     </select>
 
     <select id="selectBoardById" resultType="Board">

@@ -22,7 +22,7 @@
         <div class="board-write-body">
           <label for="title"></label>
           <input type="text" placeholder="제목을 입력해 주세요." id="title" name="title" class="board-name mb-1">
-          <input type="hidden" id="userId" name="userId" value="admin">
+          <input type="hidden" id="userId" name="userId" th:value="${session.loginUser.username}">
           <label for="content"></label>
           <textarea placeholder="내용을 입력해 주세요." class="resize-none" id="content" name="content" cols="30" rows="30"></textarea>
         </div>

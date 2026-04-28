@@ -57,6 +57,27 @@
       <div class="board-footer">
         <button type="button" class="execute-button" onclick="goBoardWrite()">글쓰기</button>
       </div>
+
+      <!-- 페이지네이션 -->
+      <div class="pagination" th:if="${totalPage > 0}">
+        <a th:if="${page > 1}"
+           th:href="@{/board(page=${page - 1})}">
+          이전
+        </a>
+        <span th:each="num : ${#numbers.sequence(1, totalPage)}">
+        <a th:if="${num != page}"
+           th:href="@{/board(page=${num})}"
+           th:text="${num}">
+        </a>
+        <strong th:if="${num == page}"
+                th:text="${num}">
+        </strong>
+        </span>
+        <a th:if="${page < totalPage}"
+           th:href="@{/board(page=${page + 1})}">
+          다음
+        </a>
+      </div>
     </div>
   </div>
 </div>
