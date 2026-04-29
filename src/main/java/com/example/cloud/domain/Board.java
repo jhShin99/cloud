@@ -1,12 +1,10 @@
 package com.example.cloud.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 public class Board {
 
     public Board(){}
@@ -25,7 +23,9 @@ public class Board {
 
     private String userId;
 
-    private Integer viewCount;
+    private int viewCount;
+
+    private int likeCount;
 
     private LocalDateTime createdAt;
 

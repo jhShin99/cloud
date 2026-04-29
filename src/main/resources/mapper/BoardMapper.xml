@@ -30,4 +30,40 @@
     <update id="updateViewCount">
         UPDATE board set view_count = view_count + 1 WHERE id = #{id}
     </update>
+
+    <select id="existsBoardLike" resultType="int">
+        SELECT COUNT(*)
+        FROM board_like
+        WHERE board_id = #{boardId}
+        AND user_id = #{userId}
+    </select>
+
+    <insert id="insertBoardLike">
+        INSERT INTO board_like (board_id, user_id) VALUES (#{boardId}, #{userId})
+    </insert>
+
+    <delete id="deleteBoardLike">
+        DELETE FROM board_like
+        WHERE board_id = #{boardId}
+        AND user_id = #{userId}
+    </delete>
+
+    <update id="increaseLikeCount">
+        UPDATE board
+        SET like_count = like_count + 1
+        WHERE id = #{boardId}
+    </update>
+
+    <update id="decreaseLikeCount">
+        UPDATE board
+        SET like_count = like_count - 1
+        WHERE id = #{boardId}
+        AND like_count > 0
+    </update>
+
+    <select id="selectLikeCount" resultType="int">
+        SELECT like_count
+        FROM board
+        WHERE id = #{boardId}
+    </select>
 </mapper>

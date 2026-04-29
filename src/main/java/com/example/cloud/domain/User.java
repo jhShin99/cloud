@@ -1,12 +1,12 @@
 package com.example.cloud.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 public class User {
 
     private Long id;

@@ -4,6 +4,7 @@ import com.example.cloud.domain.Board;
 import com.example.cloud.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,5 +40,20 @@ public class BoardService {
 
     public void increaseViewCount(Long id) {
         boardMapper.updateViewCount(id);
+    }
+
+    @Transactional
+    public int toggleLike(Long boardId, String userId) {
+        int exists = boardMapper.existsBoardLike(boardId, userId);
+
+        if (exists == 0) {
+            boardMapper.insertBoardLike(boardId, userId);
+            boardMapper.increaseLikeCount(boardId);
+        } else {
+            boardMapper.deleteBoardLike(boardId, userId);
+            boardMapper.decreaseLikeCount(boardId);
+        }
+
+        return boardMapper.selectLikeCount(boardId);
     }
 }

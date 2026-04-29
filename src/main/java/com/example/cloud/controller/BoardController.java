@@ -1,14 +1,17 @@
 package com.example.cloud.controller;
 
 import com.example.cloud.domain.Board;
+import com.example.cloud.domain.User;
+import com.example.cloud.dto.BoardLikeRequest;
 import com.example.cloud.service.BoardService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -86,5 +89,19 @@ public class BoardController {
         Long id = board.getId();
         boardService.modifyBoard(board);
         return "redirect:/board/read/" + id;
+    }
+
+    @PostMapping("/like")
+    @ResponseBody
+    public Map<String, Object> like(@RequestBody BoardLikeRequest request, HttpSession session) {
+        User loginUser = (User) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            return Map.of("success", false, "message", "로그인이 필요합니다.");
+        }
+
+        int likeCount = boardService.toggleLike(request.getBoardId(), loginUser.getUsername());
+
+        return Map.of("success", true, "likeCount", likeCount);
     }
 }

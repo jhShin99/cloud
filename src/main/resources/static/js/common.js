@@ -57,3 +57,27 @@ function confirmUpdate() {
     document.getElementById('content').value = content;
     return confirm("게시글을 수정하시겠습니까?");
 }
+
+function toggleLike() {
+    const boardId = $("#id").val();
+
+    $.ajax({
+        url: "/board/like",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ boardId: boardId }),
+
+        success: function (result) {
+            if (!result.success) {
+                alert(result.message);
+                return;
+            }
+
+            $("#likeCount").text(result.likeCount);
+        },
+
+        error: function () {
+            alert("요청 중 오류가 발생했습니다.");
+        }
+    });
+}

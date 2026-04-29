@@ -33,10 +33,13 @@
                     <input type="hidden" id="userId" name="userId" value="admin">
                     <hr class="hr2 mb-1">
                     <div class="content-view" th:utext="${board.content}"></div>
-                    <div style="display: flex; justify-content: center">
+                    <!--<div style="display: flex; justify-content: center">
                         <div class="mr-1"><img src="/img/thumbs.png" class="thumbs"></div>
                         <div style="display: flex; align-items: center"><h1 style="color: red;">0</h1></div>
-                    </div>
+                    </div>-->
+                    <button type="button" onclick="toggleLike()">
+                        추천 <span id="likeCount" th:text="${board.likeCount}"></span>
+                    </button>
                 </div>
             </form>
             <div th:if="${session.loginUser != null and session.loginUser.username == board.userId}" class="board-footer">
