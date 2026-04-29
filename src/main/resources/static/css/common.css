@@ -350,7 +350,7 @@ th, td {
     cursor: pointer;
 }
 
-.comment {
+.commentContent {
     width: 100%;
     height: 150px;
     padding: 13px;

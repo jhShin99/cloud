@@ -82,3 +82,72 @@ function toggleLike() {
         }
     });
 }
+
+$(document).ready(function() {
+    loadComments();
+})
+
+function writeComment() {
+    const boardId = $("#id").val();
+    const content = $("#commentContent").val().trim();
+
+    if (!content) {
+        alert("댓글을 입력하세요.");
+        return;
+    }
+
+    $.ajax({
+        url: "/comment/write",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            boardId: boardId,
+            content: content
+        }),
+        success: function (result) {
+            if (!result.success) {
+                alert(result.message);
+                return;
+            }
+
+            $("#commentContent").val("");
+            loadComments();
+        },
+        error: function () {
+            alert("댓글 등록 중 오류가 발생했습니다.");
+        }
+    });
+}
+
+function loadComments() {
+    const boardId = $("#id").val();
+
+    $.ajax({
+        url: "/comment/list",
+        type: "GET",
+        data: { boardId: boardId },
+        success: function (list) {
+            let html = "";
+
+            if (list.length === 0) {
+                html = `<div class="empty-comment">등록된 댓글이 없습니다.</div>`;
+            } else {
+                list.forEach(function (comment) {
+                    html += `
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <strong>${comment.userId}</strong>
+                                <span>${comment.createdAt}</span>
+                            </div>
+                            <div class="comment-content">
+                                ${comment.content}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            $("#commentList").html(html);
+        }
+    });
+}
