@@ -73,7 +73,8 @@ function toggleLike() {
                 return;
             }
 
-            $("#likeCount").text(result.likeCount);
+            $(".likeCount").text(result.likeCount);
+            $("#likeButton").toggleClass("liked");
         },
 
         error: function () {

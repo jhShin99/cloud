@@ -28,18 +28,17 @@
                         <span th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></span>
                         <span class="ml-auto">조회 [[${board.viewCount}]]</span>
                         <span class="ml-05 mr-05">|</span>
-                        <span>추천 0</span>
+                        <span>추천&nbsp;</span>
+                        <span class="likeCount" th:text="${board.likeCount}"></span>
                     </div>
                     <input type="hidden" id="userId" name="userId" value="admin">
                     <hr class="hr2 mb-1">
                     <div class="content-view" th:utext="${board.content}"></div>
-                    <!--<div style="display: flex; justify-content: center">
-                        <div class="mr-1"><img src="/img/thumbs.png" class="thumbs"></div>
-                        <div style="display: flex; align-items: center"><h1 style="color: red;">0</h1></div>
-                    </div>-->
-                    <button type="button" onclick="toggleLike()">
-                        추천 <span id="likeCount" th:text="${board.likeCount}"></span>
-                    </button>
+                    <div class="flex-center">
+                        <button type="button" id="likeButton" th:classappend="${liked} ? ' liked' : ''" onclick="toggleLike()">
+                            추천 <span class="likeCount" th:text="${board.likeCount}"></span>
+                        </button>
+                    </div>
                 </div>
             </form>
             <div th:if="${session.loginUser != null and session.loginUser.username == board.userId}" class="board-footer">

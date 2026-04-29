@@ -42,6 +42,10 @@ public class BoardService {
         boardMapper.updateViewCount(id);
     }
 
+    public boolean existsBoardLike(Long boardId, String userId) {
+        return boardMapper.existsBoardLike(boardId, userId) > 0;
+    }
+
     @Transactional
     public int toggleLike(Long boardId, String userId) {
         int exists = boardMapper.existsBoardLike(boardId, userId);

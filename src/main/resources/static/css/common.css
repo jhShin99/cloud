@@ -358,3 +358,18 @@ th, td {
     border-radius: 5px;
     resize: none;
 }
+
+#likeButton {
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #333;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#likeButton.liked {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
+    color: white;
+}

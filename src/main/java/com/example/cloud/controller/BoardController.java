@@ -40,12 +40,21 @@ public class BoardController {
     }
 
     @GetMapping("/read")
-    public String read(@RequestParam("id") Long id, @RequestParam("page") int page, Model model) {
+    public String read(@RequestParam("id") Long id, @RequestParam("page") int page, Model model, HttpSession session) {
         boardService.increaseViewCount(id);
         Board board = boardService.getBoardById(id);
-        model.addAttribute("board", board);
 
         pagination(page, model);
+
+        boolean liked = false;
+        User loginUser = (User) session.getAttribute("loginUser");
+
+        if (loginUser != null) {
+            liked = boardService.existsBoardLike(id, loginUser.getUsername());
+        }
+
+        model.addAttribute("board", board);
+        model.addAttribute("liked", liked);
 
         return "board/boardRead";
     }
