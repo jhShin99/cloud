@@ -35,8 +35,14 @@
                     <hr class="hr2 mb-1">
                     <div class="content-view" th:utext="${board.content}"></div>
                     <div class="flex-center">
-                        <button type="button" id="likeButton" th:classappend="${liked} ? ' liked' : ''" onclick="toggleLike()">
-                            추천 <span class="likeCount" th:text="${board.likeCount}"></span>
+                        <button type="button"
+                                id="likeButton"
+                                class="like-button"
+                                th:classappend="${liked} ? ' liked' : ''"
+                                onclick="toggleLike()">
+
+                            <span class="heart">❤</span>
+                            <span class="likeCount" th:text="${board.likeCount}"></span>
                         </button>
                     </div>
                 </div>

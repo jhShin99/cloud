@@ -359,17 +359,45 @@ th, td {
     resize: none;
 }
 
-#likeButton {
+.like-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 12px;
     border: 1px solid #ddd;
-    background-color: white;
-    color: #333;
-    padding: 8px 14px;
-    border-radius: 8px;
+    border-radius: 20px;
+
+    background-color: #fff;
+    color: #555;
     cursor: pointer;
+    font-size: 14px;
+
+    transition: all 0.2s ease;
 }
 
-#likeButton.liked {
-    background-color: #ff4d4f;
-    border-color: #ff4d4f;
-    color: white;
+.like-button .heart {
+    font-size: 14px;
+    color: #aaa;
 }
+
+.like-button:hover {
+    border-color: #ff4d4f;
+    color: #ff4d4f;
+}
+
+.like-button.liked {
+    background-color: #fff0f0;
+    border-color: #ff4d4f;
+    color: #ff4d4f;
+}
+
+.like-button.liked .heart {
+    color: #ff4d4f;
+}
+
+.like-button.liked .heart {
+    transform: scale(1.2);
+    transition: transform 0.2s;
+}
+
