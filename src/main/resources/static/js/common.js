@@ -137,16 +137,52 @@ function loadComments() {
 
             } else {
                 list.forEach(function (comment) {
+
+                    const loginUserId = $("#loginUserId").val();
+                    const isMine = loginUserId === comment.userId;
+
                     html += `
                         <div class="comment-item">
                             <div class="comment-username"><strong>${comment.userId}</strong></div>
                             <div class="comment-content">${comment.content}</div>
                             <div class="comment-date">${formatDate(comment.createdAt)}</div>
+                            ${isMine ? `
+                                <button type="button"
+                                        class="comment-delete-button"
+                                        onclick="deleteComment(${comment.id})">
+                                    삭제
+                                </button>
+                            ` : ''}
                         </div>
                     `;
                 });
             }
             $("#commentList").html(html);
+        }
+    });
+}
+
+function deleteComment(commentId) {
+    if (!confirm("댓글을 삭제하시겠습니까?")) {
+        return;
+    }
+
+    $.ajax({
+        url: "/comment/delete",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ id: commentId }),
+
+        success: function (result) {
+            if (!result.success) {
+                alert(result.message);
+                return;
+            }
+
+            loadComments();
+        },
+        error: function () {
+            alert("댓글 삭제 중 오류가 발생했습니다.");
         }
     });
 }
