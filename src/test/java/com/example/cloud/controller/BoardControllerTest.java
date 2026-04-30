@@ -19,60 +19,68 @@ class BoardControllerTest {
     void createBoard() {
         Random random = new Random();
 
-        // 1. Writer: 자연스러운 닉네임 조합
-        String[] writerPrefix = {"행복", "산책", "커피", "노을", "평온", "열정", "기록", "소소"};
-        String[] writerCore = {"러버", "메이트", "조아", "매니아", "로그", "마음", "피플", "다이어리"};
-        String[] writerSuffix = {"_01", "77", "님", "이", "로그", "", "", ""};
+        // 1. Writer: 고닉과 유동닉의 적절한 조화
+        String[] writerPrefix = {"해축", "국야", "GOAT", "메시", "황희찬", "류현진", "무관", "킹", "갓"};
+        String[] writerCore = {"박사", "전문가", "팬", "탈출지능", "수호자", "버스터", "헌터", "빌런"};
+        String[] writerSuffix = {"", "", "", "ㅇㅇ", "ㅇㅇ(121.162)", "ㅇㅇ(211.234)", "ㅇㅇ(118.235)"};
 
-        // 2. Title: 일상의 조각들
-        String[] titlePrefix = {"[일상]", "[주말]", "[오후]", "[생각]", "[발견]", "[감성]", "[기록]", "[추천]"};
+        // 2. Title: 자극적이고 짧은 커뮤니티식 제목
+        String[] titlePrefix = {
+                "[오피셜]", "오늘자", "속보)", "근데", "솔직히", "진짜", "아니", "와", "레전드", "이거봐라", "강추)"
+        };
+
         String[] titleCore = {
-                "카페에서 보내는 오후", "퇴근길 노을이 정말 예쁘네요", "이번 주말엔 드라이브 갈까",
-                "인생은 생각보다 짧고 즐겁네요", "오늘 점심 메뉴는 성공적", "집 앞 공원 산책하다 발견한 것들",
-                "바쁜 일상 속 작은 여유", "새로 산 책 읽는 중입니다", "운동 끝나고 마시는 물 한 잔",
-                "가끔은 멍하니 있는 시간이 필요해", "오늘 날씨가 딱 외출하기 좋네요"
+                "메시 폼 미쳤다", "해리 케인 또 무관 확정", "손흥민 푸스카스급 골", "심판 판정 이게 맞냐",
+                "올해 우승팀 미리 정해줌", "이 형님은 늙지도 않네", "월클 기준 정리해드림", "방금 터진 대박 수비",
+                "감독 경질설 떴다", "유망주 한 명 발견함", "야구는 9회말 2아웃부터지", "오늘 경기 직관 후기",
+                "이 팀은 미래가 없다", "연봉값 못하는 선수 TOP 3", "역대급 오심 등장"
         };
-        String[] titleSuffix = {", 정말 평화롭네요.", ", 다들 좋은 하루 보내세요.", ". 공유합니다.", ". 너무 좋네요.", ", 기분 좋은 하루네요."};
 
-        // 3. Content: 툭 던지는 듯한 일상 이야기
+        String[] titleSuffix = {
+                "ㅋㅋㅋ", "ㄷㄷㄷ", "ㅠㅠ", "??", " 실화냐?", " 인가요..", " 개추 ㅋㅋ", " 대박이네", " 미쳤음"
+        };
+
+        // 3. Content: 짧고 강렬한 본문 + 짤방 언급
         String[] contentPrefix = {
-                "오늘 문득 그런 생각이 들었어요.", "바쁜 하루를 마치고 집에 돌아왔는데,",
-                "날씨가 너무 좋아서 그냥 지나칠 수가 없더라고요.", "커피 한 잔 마시면서 창밖을 보는데,",
-                "별거 아닌 일상이지만 기록으로 남겨봅니다.", "최근에 가장 즐거웠던 순간은,",
-                "여러분은 오늘 어떤 하루를 보내셨나요?", "저는 요즘 이런 소소한 즐거움에 빠져있어요."
+                "방금 봤냐?", "진짜 소름 돋았다..", "이게 선수냐?", "아니 여기서 이걸?",
+                "팩트만 말함.", "아무도 반박 못 할 듯.", "오늘 경기 요약해준다.", "형들 의견 궁금함.",
+                "진짜 화가 나서 못 보겠다.", "이 맛에 스포츠 본다."
         };
+
         String[] contentCore = {
-                "주말에는 아무 생각 없이 푹 쉬는 게 최고인 것 같아요.",
-                "좋아하는 음악을 들으면서 걷는 이 길이 너무 좋습니다.",
-                "회사 근처 맛집을 발견했는데 여기 정말 괜찮네요.",
-                "내일은 또 어떤 일이 기다리고 있을지 기대됩니다.",
-                "가끔은 이렇게 멈춰서 하늘을 보는 시간이 꼭 필요한 것 같아요.",
-                "오늘 퇴근길에 본 하늘이 너무 예뻐서 사진을 한 장 찍었네요.",
-                "다음 주 계획을 짜고 있는데 벌써 설렙니다.",
-                "좋은 사람들과 함께하는 저녁은 언제나 옳죠."
+                "전성기 시절 폼 돌아왔네 ㄷㄷㄷ", "진짜 팀 세대교체 시급하다.", "돈 받고 뛰는 거 맞냐? 내가 뛰어도 저거보단 잘함.",
+                "기본기가 아예 안 되어있는데 어떻게 프로지?", "오늘 심판 돈 얼마 받았냐? 눈이 있으면 저걸 안 불어?",
+                "진짜 하늘이 돕는다 ㅋㅋㅋ 이게 들어가네.", "감독 전술 실화냐? 교체 카드 쓰는 꼴 좀 봐라.",
+                "역대급 커리어 하이 찍을 듯.", "이 팀 응원하는 내가 레전드다.", "깔 수가 없다 진짜 완벽했음."
         };
+
         String[] contentSuffix = {
-                "\n\n다들 오늘 하루 고생 많으셨습니다. 편안한 밤 되세요!",
-                "\n\n이런 평범한 행복이 진짜 소중한 것 같아요.",
-                "\n\n다들 오늘 저녁은 맛있는 거 드시고 푹 쉬세요.",
-                "\n\n가끔은 이렇게 일상 글을 쓰는 것도 나쁘지 않네요.",
-                "\n\n오늘도 고생하셨습니다. 모두 화이팅!",
-                "\n\n내일도 무탈하고 행복한 하루 되길 바라요."
+                "\n\n반박 시 니 말이 맞음.", "\n\nㄹㅇㅋㅋ", "\n\n내일 뉴스 도배되겠네.", "\n\n추천 좀 눌러줘라.",
+                "\n\n후... 일단 술 마시러 간다.", "\n\n인정하면 개추 좀 ㅋㅋㅋ", "\n\n앞으로 이 팀 경기는 안 본다.",
+                "\n\n성지순례 미리 와라."
         };
 
-        // 2000번 반복 실행
         for (int i = 0; i < 2000; i++) {
-            String title = titlePrefix[random.nextInt(titlePrefix.length)] + " " +
-                    titleCore[random.nextInt(titleCore.length)] +
-                    titleSuffix[random.nextInt(titleSuffix.length)];
+            // 닉네임 생성 (유동닉 확률 추가)
+            String writer;
+            if (random.nextInt(10) < 4) { // 40% 확률로 유동닉
+                writer = writerSuffix[random.nextInt(4) + 3];
+            } else {
+                writer = writerPrefix[random.nextInt(writerPrefix.length)] +
+                        writerCore[random.nextInt(writerCore.length)] +
+                        writerSuffix[random.nextInt(3)];
+            }
 
-            String content = contentPrefix[random.nextInt(contentPrefix.length)] + "\n\n" +
-                    contentCore[random.nextInt(contentCore.length)] + "\n\n" +
-                    contentSuffix[random.nextInt(contentSuffix.length)];
+            String title = (
+                    titlePrefix[random.nextInt(titlePrefix.length)] + " " +
+                            titleCore[random.nextInt(titleCore.length)] + " " +
+                            titleSuffix[random.nextInt(titleSuffix.length)]
+            ).trim();
 
-            String writer = writerPrefix[random.nextInt(writerPrefix.length)] +
-                    writerCore[random.nextInt(writerCore.length)] +
-                    writerSuffix[random.nextInt(writerSuffix.length)];
+            String content =
+                    contentPrefix[random.nextInt(contentPrefix.length)] + "\n\n" +
+                            contentCore[random.nextInt(contentCore.length)] + "\n\n" +
+                            contentSuffix[random.nextInt(contentSuffix.length)];
 
             Board board = new Board(title, content, writer);
             boardService.createBoard(board);

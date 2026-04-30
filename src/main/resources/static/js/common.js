@@ -17,10 +17,6 @@ function goBoardWrite() {
     location.href = '/board/write';
 }
 
-function undoBoardWrite() {
-    location.href = '/board/list';
-}
-
 function logout() {
     location.href = '/user/logout';
 }
@@ -33,10 +29,6 @@ function deleteBoardById(id) {
 
 function updateBoardById(id) {
     location.href = '/board/update/' + id;
-}
-
-function undoUpdate(id) {
-    location.href = '/board/read/' + id;
 }
 
 function confirmWrite() {
@@ -119,6 +111,18 @@ function writeComment() {
     });
 }
 
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    const h = String(date.getHours()).padStart(2, '0');
+    const min = String(date.getMinutes()).padStart(2, '0');
+
+    return `${y}-${m}-${d} ${h}:${min}`;
+}
+
 function loadComments() {
     const boardId = $("#id").val();
 
@@ -130,23 +134,18 @@ function loadComments() {
             let html = "";
 
             if (list.length === 0) {
-                html = `<div class="empty-comment">등록된 댓글이 없습니다.</div>`;
+
             } else {
                 list.forEach(function (comment) {
                     html += `
                         <div class="comment-item">
-                            <div class="comment-header">
-                                <strong>${comment.userId}</strong>
-                                <span>${comment.createdAt}</span>
-                            </div>
-                            <div class="comment-content">
-                                ${comment.content}
-                            </div>
+                            <div class="comment-username"><strong>${comment.userId}</strong></div>
+                            <div class="comment-content">${comment.content}</div>
+                            <div class="comment-date">${formatDate(comment.createdAt)}</div>
                         </div>
                     `;
                 });
             }
-
             $("#commentList").html(html);
         }
     });

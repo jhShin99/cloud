@@ -20,6 +20,7 @@
             </div>
             <form>
                 <div class="board-write-body">
+                    <input type="hidden" id="loginUserId" th:value="${session.loginUser != null ? session.loginUser.username : ''}">
                     <input type="hidden" id="id" name="id" th:value="${board.id}">
                     <div class="mb-05"><span th:text="${board.title}" class="bold"></span></div>
                     <div class="writer-date-view mb-1">
@@ -53,8 +54,8 @@
             </div>
             <hr class="mt-1 hr mb-1">
             <div id="commentList"></div>
-            <div class="comment-write">
-                <textarea class="commentContent" placeholder="타인의 권리를 침해하거나 명예를 훼손하는 댓글은 운영원칙 및 관련 법률에 제재를 받을 수 있습니다."></textarea>
+            <div class="comment-write mt-3">
+                <textarea id="commentContent" placeholder="타인의 권리를 침해하거나 명예를 훼손하는 댓글은 운영원칙 및 관련 법률에 제재를 받을 수 있습니다."></textarea>
                 <div style="display: flex; justify-content: end;"><button type="button" class="execute-button mr-05" onclick="writeComment()">등록</button></div>
             </div>
             <hr class="mt-1 hr">
