@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String join(@RequestParam("user") User user, RedirectAttributes redirectAttributes) {
+    public String join(User user, RedirectAttributes redirectAttributes) {
 
         if (!StringUtils.hasText(user.getUsername()) || !StringUtils.hasText(user.getPassword()) || !StringUtils.hasText(user.getName())) {
             redirectAttributes.addFlashAttribute("notNull", "빈칸을 입력하세요.");
