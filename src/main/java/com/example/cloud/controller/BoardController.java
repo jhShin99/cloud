@@ -39,8 +39,8 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-    @GetMapping("/read")
-    public String read(@RequestParam("id") Long id, @RequestParam("page") int page, Model model, HttpSession session) {
+    @GetMapping("/{id}")
+    public String read(@PathVariable("id") Long id, @RequestParam("page") int page, Model model, HttpSession session) {
         boardService.increaseViewCount(id);
         Board board = boardService.getBoardById(id);
 

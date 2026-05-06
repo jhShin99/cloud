@@ -28,7 +28,7 @@
             <tr th:each="board : ${boardList}">
                 <td th:text="${board.id}" class="t-center"></td>
                 <td>
-                    <a th:href="@{/board/read(id=${board.id}, page=${page})}"
+                    <a th:href="@{/board/{id}(id=${board.id}, page=${page})}"
                        th:text="${board.title}" class="board-title"></a>
                 </td>
                 <td th:text="${board.userId}" class="t-center"></td>
