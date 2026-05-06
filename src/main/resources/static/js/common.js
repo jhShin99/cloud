@@ -18,7 +18,16 @@ function goBoardWrite() {
 }
 
 function logout() {
-    location.href = '/user/logout';
+    $.ajax({
+        url: "/user/logout",
+        type: "POST",
+        success: function () {
+            location.reload();
+        },
+        error: function () {
+            alert("로그아웃 실패");
+        }
+    })
 }
 
 function deleteBoardById(id) {
