@@ -140,6 +140,10 @@ function writeComment() {
         return;
     }
 
+    if (!confirm("댓글을 등록하시겠습니까?")) {
+        return;
+    }
+
     $.ajax({
         url: "/comment/write",
         type: "POST",
