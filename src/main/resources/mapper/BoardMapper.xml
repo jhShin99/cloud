@@ -15,7 +15,8 @@
         SELECT * FROM board WHERE id = #{id}
     </select>
 
-    <insert id="insertBoard" parameterType="Board">
+    <!-- useGeneratedKeys: 생성된 PK 가져오기 / keyProperty: Board.id에 넣기 -->
+    <insert id="insertBoard" parameterType="Board" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO board (title, content, user_id) VALUES (#{title}, #{content}, #{userId})
     </insert>
 

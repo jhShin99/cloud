@@ -25,7 +25,8 @@
           <label for="title"></label>
           <input type="text" placeholder="제목을 입력해 주세요." id="title" name="title" class="board-name mb-1">
           <input type="hidden" id="userId" name="userId" th:value="${session.loginUser.username}">
-          <input type="hidden" name="content" id="content">
+          <input type="hidden" id="content" name="content">
+          <input type="hidden" id="page" name="page" th:value="${page}">
           <div id="editor"></div>
         </div>
         <div class="board-footer">
@@ -33,6 +34,10 @@
           <button type="submit" class="execute-button">등록</button>
         </div>
       </form>
+      <hr class="mt-1 hr">
+    </div>
+    <div class="main-content mt-10">
+      <div th:replace="~{fragments/boardList :: boardList}"></div>
     </div>
   </div>
 </div>

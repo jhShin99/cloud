@@ -22,6 +22,7 @@
                 <div class="board-write-body">
                     <input type="hidden" id="loginUserId" th:value="${session.loginUser != null ? session.loginUser.username : ''}">
                     <input type="hidden" id="id" name="id" th:value="${board.id}">
+                    <input type="hidden" id="page" name="page" th:value="${page}">
                     <div class="mb-05"><span th:text="${board.title}" class="bold"></span></div>
                     <div class="writer-date-view mb-1">
                         <span th:text="${board.userId}"></span>

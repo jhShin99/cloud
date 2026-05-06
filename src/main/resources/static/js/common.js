@@ -13,8 +13,8 @@ function goBoardList() {
     location.href = '/board';
 }
 
-function goBoardWrite() {
-    location.href = '/board/write';
+function goBoardWrite(page) {
+    location.href = '/board/write?page=' + page;
 }
 
 function logout() {

@@ -31,14 +31,19 @@ public class BoardController {
     }
 
     @GetMapping("/write")
-    public String writeForm() {
+    public String writeForm(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
+
+        pagination(page, model);
+
         return "board/boardWrite";
     }
 
     @PostMapping("/write")
     public String write(Board board) {
         boardService.createBoard(board);
-        return "redirect:/board";
+        Long id = board.getId();
+        int page = board.getPage();
+        return "redirect:/board/" + id + "?page=" + page;
     }
 
     @GetMapping("/{id}")

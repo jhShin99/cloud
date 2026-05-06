@@ -39,7 +39,7 @@
         </table>
     </div>
     <div class="board-footer">
-        <button type="button" class="execute-button mr-05" onclick="goBoardWrite()">글쓰기</button>
+        <button type="button" class="execute-button mr-05" th:onclick="|goBoardWrite('${page}')|">글쓰기</button>
     </div>
 
     <!-- 페이지네이션 -->
