@@ -36,7 +36,7 @@ public class BoardController {
     @PostMapping("/write")
     public String write(Board board) {
         boardService.createBoard(board);
-        return "redirect:/board/list";
+        return "redirect:/board";
     }
 
     @GetMapping("/{id}")
@@ -83,7 +83,7 @@ public class BoardController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         boardService.removeBoard(id);
-        return "redirect:/board/list";
+        return "redirect:/board";
     }
 
     @GetMapping("/update/{id}")
