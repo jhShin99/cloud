@@ -92,12 +92,20 @@
     margin-top: 100px;
 }
 
+.ml-02 {
+    margin-left: 2px;
+}
+
 .ml-1 {
     margin-left: 10px;
 }
 
 .ml-10 {
     margin-left: 100px;
+}
+
+.mb-01 {
+    margin-bottom: 1px;
 }
 
 .mb-1 {
@@ -419,4 +427,17 @@ th, td {
 .comment-date {
     width: 15%;
     text-align: end;
+}
+
+.comment-delete-button {
+    border: none;
+    background: none;
+
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.comment-delete-button:hover {
+    color: #e03131;
 }

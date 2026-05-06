@@ -148,9 +148,9 @@ function loadComments() {
                             <div class="comment-date">${formatDate(comment.createdAt)}</div>
                             ${isMine ? `
                                 <button type="button"
-                                        class="comment-delete-button"
+                                        class="comment-delete-button ml-02 mb-01"
                                         onclick="deleteComment(${comment.id})">
-                                    삭제
+                                    X
                                 </button>
                             ` : ''}
                         </div>
