@@ -88,7 +88,7 @@ public class BoardController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/{id}/edit")
     public String updateForm(@PathVariable("id") Long id, Model model) {
         Board board = boardService.getBoardById(id);
         model.addAttribute("board", board);
@@ -99,7 +99,7 @@ public class BoardController {
     public String update(Board board) {
         Long id = board.getId();
         boardService.modifyBoard(board);
-        return "redirect:/board/read/" + id;
+        return "redirect:/board/" + id;
     }
 
     @PostMapping("/like")

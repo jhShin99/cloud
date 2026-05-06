@@ -51,7 +51,7 @@ function deleteBoardById(id) {
 }
 
 function updateBoardById(id) {
-    location.href = '/board/update/' + id;
+    location.href = '/board/' + id + '/edit';
 }
 
 function confirmWrite() {
