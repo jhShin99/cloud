@@ -20,7 +20,7 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/list")
+    @GetMapping
     public String list(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
 
         pagination(page, model);

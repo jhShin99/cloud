@@ -45,20 +45,20 @@
     <!-- 페이지네이션 -->
     <div class="pagination mt-3 pb-5" th:if="${totalPage > 0}">
         <a th:if="${page > 1}"
-           th:href="@{/board/list(page=1)}"
+           th:href="@{/board(page=1)}"
            class="pagination-link">
             <img src="/img/pagination/angles-left.png" style="width: 15px; height: 15px">
         </a>
 
         <a th:if="${startPage > 1}"
-           th:href="@{/board/list(page=${startPage - 1})}"
+           th:href="@{/board(page=${startPage - 1})}"
            class="pagination-link">
             <img src="/img/pagination/angle-left.png" style="width: 15px; height: 15px">
         </a>
 
         <span th:each="num : ${#numbers.sequence(startPage, endPage)}">
         <a th:if="${num != page}"
-           th:href="@{/board/list(page=${num})}"
+           th:href="@{/board(page=${num})}"
            th:text="${num}"
            class="pagination-link">
         </a>
@@ -70,13 +70,13 @@
         </span>
 
         <a th:if="${endPage < totalPage}"
-           th:href="@{/board/list(page=${endPage + 1})}"
+           th:href="@{/board(page=${endPage + 1})}"
            class="pagination-link">
             <img src="/img/pagination/angle-right.png" style="width: 15px; height: 15px">
         </a>
 
         <a th:if="${page < totalPage}"
-           th:href="@{/board/list(page=${totalPage})}"
+           th:href="@{/board(page=${totalPage})}"
            class="pagination-link">
             <img src="/img/pagination/angles-right.png" style="width: 15px; height: 15px">
         </a>

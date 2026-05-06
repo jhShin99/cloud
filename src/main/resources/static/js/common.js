@@ -10,7 +10,7 @@ function goMain() {
 }
 
 function goBoardList() {
-    location.href = '/board/list';
+    location.href = '/board';
 }
 
 function goBoardWrite() {
