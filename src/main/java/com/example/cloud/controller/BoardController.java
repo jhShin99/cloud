@@ -59,7 +59,7 @@ public class BoardController {
         return "board/boardRead";
     }
 
-    private void pagination(@RequestParam("page") int page, Model model) {
+    private void pagination(int page, Model model) {
         int size = 50; // 한 페이지 게시글 수
         int offset = (page - 1) * size;
 
