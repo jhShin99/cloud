@@ -50,8 +50,8 @@ function deleteBoardById(id) {
     });
 }
 
-function updateBoardById(id) {
-    location.href = '/board/' + id + '/edit';
+function updateBoardById(id, page) {
+    location.href = '/board/' + id + '/edit?page=' + page;
 }
 
 function confirmWrite() {
@@ -76,6 +76,7 @@ function confirmUpdate(event) {
    }
 
    const id = $("#id").val();
+   const page = $("#page").val();
 
    const requestData = {
        title: $("#title").val(),
@@ -90,7 +91,7 @@ function confirmUpdate(event) {
 
         success: function () {
             alert("수정 완료");
-            location.href = "/board/" + id;
+            location.href = "/board/" + id + "?page=" + page;
         },
 
         error: function () {

@@ -95,9 +95,12 @@ public class BoardController {
     }
 
     @GetMapping("/{id}/edit")
-    public String updateForm(@PathVariable("id") Long id, Model model) {
+    public String updateForm(@PathVariable("id") Long id, @RequestParam(value = "page", defaultValue = "1") int page, Model model) {
         Board board = boardService.getBoardById(id);
         model.addAttribute("board", board);
+
+        pagination(page, model);
+
         return "board/boardUpdate";
     }
 

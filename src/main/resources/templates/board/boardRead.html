@@ -50,7 +50,7 @@
                 </div>
             </form>
             <div th:if="${session.loginUser != null and session.loginUser.username == board.userId}" class="board-footer">
-                <button type="button" class="update-button mr-05" th:onclick="|updateBoardById('${board.id}')|">수정</button>
+                <button type="button" class="update-button mr-05" th:onclick="|updateBoardById('${board.id}', '${page}')|">수정</button>
                 <button type="button" class="delete-button mr-05" th:onclick="|deleteBoardById('${board.id}')|">삭제</button>
             </div>
             <hr class="mt-1 hr mb-1">

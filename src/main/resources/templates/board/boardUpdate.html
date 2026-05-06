@@ -23,6 +23,7 @@
       <form id="updateForm" onsubmit="return confirmUpdate(event)">
         <div class="board-write-body">
           <input type="hidden" id="id" name="id" th:value="${board.id}">
+          <input type="hidden" id="page" name="page" th:value="${page}">
           <label for="title"></label>
           <input type="text" placeholder="제목을 입력해 주세요." id="title" name="title" th:value="${board.title}" class="board-name mb-1">
           <div id="editor"></div>
@@ -32,8 +33,12 @@
           <button type="submit" class="execute-button">저장</button>
         </div>
       </form>
+      <hr class="mt-1 hr">
     </div>
   </div>
+</div>
+<div class="main-content mt-10">
+  <div th:replace="~{fragments/boardList :: boardList}"></div>
 </div>
 <script th:inline="javascript">
   const editor = new toastui.Editor({
