@@ -67,10 +67,38 @@ function confirmWrite() {
     return false;
 }
 
-function confirmUpdate() {
-    const content = editor.getHTML();
-    document.getElementById('content').value = content;
-    return confirm("게시글을 수정하시겠습니까?");
+function confirmUpdate(event) {
+
+   event.preventDefault();
+
+   if (!confirm("게시글을 수정하시겠습니까?")) {
+       return false;
+   }
+
+   const id = $("#id").val();
+
+   const requestData = {
+       title: $("#title").val(),
+       content: editor.getHTML()
+   };
+
+    $.ajax({
+        url: "/board/" + id,
+        type: "PATCH",
+        contentType: "application/json",
+        data: JSON.stringify(requestData),
+
+        success: function () {
+            alert("수정 완료");
+            location.href = "/board/" + id;
+        },
+
+        error: function () {
+            alert("수정 실패");
+        }
+    });
+
+    return false;
 }
 
 function toggleLike() {

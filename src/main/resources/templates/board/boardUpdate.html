@@ -20,13 +20,11 @@
         <h1 class="mb-1 cornflowerblue pointer" onclick="goBoardList()">자유게시판</h1>
         <hr class="mb-1 hr">
       </div>
-      <form action="/board/update" method="post" onsubmit="return confirmUpdate()">
+      <form id="updateForm" onsubmit="return confirmUpdate(event)">
         <div class="board-write-body">
           <input type="hidden" id="id" name="id" th:value="${board.id}">
           <label for="title"></label>
           <input type="text" placeholder="제목을 입력해 주세요." id="title" name="title" th:value="${board.title}" class="board-name mb-1">
-          <input type="hidden" id="userId" name="userId" value="admin">
-          <input type="hidden" name="content" id="content">
           <div id="editor"></div>
         </div>
         <div class="board-footer">

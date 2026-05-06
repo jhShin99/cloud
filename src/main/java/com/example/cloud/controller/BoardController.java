@@ -3,6 +3,7 @@ package com.example.cloud.controller;
 import com.example.cloud.domain.Board;
 import com.example.cloud.domain.User;
 import com.example.cloud.dto.BoardLikeRequest;
+import com.example.cloud.dto.BoardUpdateRequest;
 import com.example.cloud.service.BoardService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -95,11 +96,11 @@ public class BoardController {
         return "board/boardUpdate";
     }
 
-    @PostMapping("/update")
-    public String update(Board board) {
-        Long id = board.getId();
-        boardService.modifyBoard(board);
-        return "redirect:/board/" + id;
+    @PatchMapping("/{id}")
+    @ResponseBody
+    public ResponseEntity<Void> update(@PathVariable("id") Long id, @RequestBody BoardUpdateRequest request) {
+        boardService.modifyBoard(id, request);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/like")

@@ -1,6 +1,7 @@
 package com.example.cloud.service;
 
 import com.example.cloud.domain.Board;
+import com.example.cloud.dto.BoardUpdateRequest;
 import com.example.cloud.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,13 @@ public class BoardService {
         boardMapper.insertBoard(board);
     }
 
-    public void modifyBoard(Board board) {
+    public void modifyBoard(Long id, BoardUpdateRequest request) {
+
+        Board board = boardMapper.selectBoardById(id);
+
+        board.setTitle(request.getTitle());
+        board.setContent(request.getContent());
+
         boardMapper.updateBoard(board);
     }
 
