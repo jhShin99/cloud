@@ -6,6 +6,7 @@ import com.example.cloud.dto.BoardLikeRequest;
 import com.example.cloud.service.BoardService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -80,10 +81,11 @@ public class BoardController {
         model.addAttribute("endPage", endPage);
     }
 
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id) {
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         boardService.removeBoard(id);
-        return "redirect:/board";
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/update/{id}")

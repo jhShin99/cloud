@@ -31,9 +31,23 @@ function logout() {
 }
 
 function deleteBoardById(id) {
-    if (confirm("삭제하시겠습니까?")) {
-        location.href = '/board/delete/' + id;
+    if (!confirm("삭제하시겠습니까?")) {
+        return;
     }
+
+    $.ajax({
+        url: "/board/" + id,
+        type: "DELETE",
+
+        success: function () {
+            alert("게시글이 삭제되었습니다.");
+            location.href = "/board";
+        },
+
+        error: function () {
+            alert("게시글 삭제 실패");
+        }
+    });
 }
 
 function updateBoardById(id) {
